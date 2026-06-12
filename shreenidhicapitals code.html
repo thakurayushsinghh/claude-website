@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shree Nidhi Capitals provides flexible and transparent loan solutions for personal, business, home, and education needs. Your trusted financial growth partner." />
+  <title>Shree Nidhi Capitals — Trusted Lending Partner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0f2340;
+      --navy-mid: #1a3558;
+      --gold: #c8972a;
+      --gold-light: #e8b84b;
+      --cream: #faf8f4;
+      --white: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --section-pad: 96px 24px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 70px;
+      background: rgba(15,35,64,0.96);
+      backdrop-filter: blur(10px);
+    }
+    .nav-logo { display: flex; flex-direction: column; line-height: 1.1; }
+    .nav-logo span:first-child { color: var(--white); font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; }
+    .nav-logo span:last-child { color: var(--gold); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta {
+      background: var(--gold); color: var(--navy); border: none;
+      padding: 10px 22px; border-radius: 6px; font-weight: 600; font-size: 0.875rem;
+      cursor: pointer; text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1f4a7a 100%);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 120px 24px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(200,151,42,0.12) 0%, transparent 60%);
+    }
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid rgba(200,151,42,0.5);
+      color: var(--gold-light);
+      padding: 6px 16px; border-radius: 20px;
+      font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .hero h1 em { color: var(--gold-light); font-style: normal; }
+    .hero p {
+      color: rgba(255,255,255,0.75);
+      font-size: 1.1rem; max-width: 600px; margin: 0 auto 40px;
+    }
+    .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--navy);
+      padding: 14px 32px; border-radius: 8px;
+      font-weight: 600; font-size: 0.95rem; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,0.4); color: var(--white);
+      padding: 14px 32px; border-radius: 8px;
+      font-weight: 500; font-size: 0.95rem; text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold-light); background: rgba(255,255,255,0.05); }
+
+    /* Stats bar */
+    .stats-bar {
+      background: rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      position: absolute; bottom: 0; left: 0; right: 0;
+      display: flex; justify-content: center; gap: 0;
+    }
+    .stat-item {
+      flex: 1; max-width: 200px;
+      text-align: center; padding: 28px 16px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-item strong {
+      display: block; color: var(--gold-light);
+      font-size: 1.75rem; font-weight: 700; font-family: 'Playfair Display', serif;
+    }
+    .stat-item span { color: rgba(255,255,255,0.6); font-size: 0.8rem; }
+
+    /* ── ABOUT ── */
+    #about {
+      padding: var(--section-pad);
+      background: var(--cream);
+    }
+    .section-eyebrow {
+      color: var(--gold); font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--navy); line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .section-title em { color: var(--gold); font-style: normal; }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .about-text p {
+      color: var(--muted); font-size: 1rem; margin-bottom: 16px; max-width: 480px;
+    }
+    .pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
+    .pillar {
+      background: var(--white);
+      border-radius: 12px; padding: 22px;
+      border-left: 3px solid var(--gold);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .pillar h4 { color: var(--navy); font-size: 0.9rem; font-weight: 600; margin-bottom: 6px; }
+    .pillar p { color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .astat {
+      background: var(--navy);
+      border-radius: 14px; padding: 32px 24px; text-align: center;
+    }
+    .astat strong {
+      display: block; color: var(--gold-light);
+      font-size: 2rem; font-family: 'Playfair Display', serif;
+      font-weight: 700; margin-bottom: 6px;
+    }
+    .astat span { color: rgba(255,255,255,0.6); font-size: 0.8rem; }
+
+    /* ── LOANS ── */
+    #loans { padding: var(--section-pad); }
+    .loans-header { text-align: center; margin-bottom: 56px; }
+    .loans-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; max-width: 1100px; margin: 0 auto;
+    }
+    .loan-card {
+      border: 1px solid var(--border); border-radius: 16px;
+      padding: 32px 28px; transition: transform 0.2s, box-shadow 0.2s;
+      background: var(--white);
+    }
+    .loan-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+    .loan-tag {
+      display: inline-block;
+      background: #fff7e6; color: var(--gold);
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 4px;
+      margin-bottom: 16px;
+    }
+    .loan-card h3 { color: var(--navy); font-size: 1.15rem; margin-bottom: 6px; }
+    .loan-rate { color: var(--gold); font-size: 0.85rem; font-weight: 600; margin-bottom: 14px; }
+    .loan-card p { color: var(--muted); font-size: 0.875rem; margin-bottom: 20px; line-height: 1.6; }
+    .loan-card ul { list-style: none; margin-bottom: 24px; }
+    .loan-card ul li {
+      color: var(--muted); font-size: 0.82rem; padding: 4px 0;
+      padding-left: 18px; position: relative;
+    }
+    .loan-card ul li::before {
+      content: '✓'; position: absolute; left: 0;
+      color: var(--gold); font-size: 0.75rem;
+    }
+    .loan-link {
+      color: var(--navy); font-size: 0.85rem; font-weight: 600;
+      text-decoration: none; border-bottom: 1.5px solid var(--gold);
+      padding-bottom: 2px; transition: color 0.2s;
+    }
+    .loan-link:hover { color: var(--gold); }
+
+    /* ── PROCESS ── */
+    #process { padding: var(--section-pad); background: var(--navy); }
+    #process .section-eyebrow { color: var(--gold-light); }
+    #process .section-title { color: var(--white); }
+    #process .section-title em { color: var(--gold-light); }
+    .process-header { text-align: center; margin-bottom: 64px; }
+    .process-header p { color: rgba(255,255,255,0.65); max-width: 540px; margin: 0 auto; }
+    .steps {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 32px; max-width: 1100px; margin: 0 auto;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute; top: 36px; left: 10%; right: 10%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(200,151,42,0.4), transparent);
+    }
+    .step { text-align: center; }
+    .step-num {
+      width: 72px; height: 72px;
+      border: 2px solid rgba(200,151,42,0.4);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      color: var(--gold-light); font-size: 1.4rem;
+      font-family: 'Playfair Display', serif; font-weight: 700;
+      background: rgba(200,151,42,0.08);
+    }
+    .step h4 { color: var(--white); font-size: 1rem; margin-bottom: 10px; }
+    .step p { color: rgba(255,255,255,0.55); font-size: 0.85rem; line-height: 1.6; }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { padding: var(--section-pad); background: var(--cream); }
+    .testimonials-header { text-align: center; margin-bottom: 56px; }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 28px; max-width: 1100px; margin: 0 auto;
+    }
+    .testi-card {
+      background: var(--white); border-radius: 16px;
+      padding: 36px 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      position: relative;
+    }
+    .testi-card::before {
+      content: '\201C';
+      position: absolute; top: 20px; left: 24px;
+      font-size: 4rem; color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      line-height: 1; opacity: 0.3;
+    }
+    .testi-card p {
+      color: var(--muted); font-size: 0.9rem; line-height: 1.7;
+      margin-bottom: 24px; padding-top: 12px;
+    }
+    .testi-author strong { color: var(--navy); font-size: 0.9rem; display: block; }
+    .testi-author span { color: var(--muted); font-size: 0.78rem; }
+
+    /* ── CONTACT ── */
+    #contact { padding: var(--section-pad); }
+    .contact-header { text-align: center; margin-bottom: 56px; }
+    .contact-header p { color: var(--muted); max-width: 520px; margin: 8px auto 0; }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.4fr;
+      gap: 48px; max-width: 1000px; margin: 0 auto;
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+    .cinfo-item { display: flex; gap: 16px; align-items: flex-start; }
+    .cinfo-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: #fff7e6;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .cinfo-item strong { color: var(--navy); display: block; font-size: 0.875rem; margin-bottom: 4px; }
+    .cinfo-item span { color: var(--muted); font-size: 0.83rem; }
+    .contact-form {
+      background: var(--cream); border-radius: 16px;
+      padding: 36px;
+    }
+    .contact-form h3 { color: var(--navy); font-size: 1.1rem; margin-bottom: 6px; }
+    .contact-form p { color: var(--muted); font-size: 0.82rem; margin-bottom: 24px; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; color: var(--navy); font-size: 0.82rem; font-weight: 500; margin-bottom: 6px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 12px 14px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-family: 'Inter', sans-serif; font-size: 0.875rem;
+      background: var(--white); color: var(--text);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .btn-submit {
+      width: 100%; background: var(--navy); color: var(--white);
+      border: none; padding: 14px; border-radius: 8px;
+      font-weight: 600; font-size: 0.95rem; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-submit:hover { background: var(--gold); color: var(--navy); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      padding: 64px 48px 32px;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 48px;
+    }
+    .footer-brand .nav-logo { margin-bottom: 14px; }
+    .footer-brand p { color: rgba(255,255,255,0.5); font-size: 0.83rem; line-height: 1.7; max-width: 260px; }
+    .footer-badges { display: flex; gap: 10px; margin-top: 18px; }
+    .badge {
+      border: 1px solid rgba(200,151,42,0.4);
+      color: var(--gold-light); font-size: 0.72rem; font-weight: 600;
+      padding: 4px 10px; border-radius: 4px; letter-spacing: 0.05em;
+    }
+    .footer-col h4 {
+      color: var(--white); font-size: 0.85rem; font-weight: 600;
+      margin-bottom: 16px; letter-spacing: 0.04em;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.5); font-size: 0.82rem;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { color: rgba(255,255,255,0.35); font-size: 0.78rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .loans-grid { grid-template-columns: 1fr 1fr; }
+      .testi-grid { grid-template-columns: 1fr; max-width: 500px; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      :root { --section-pad: 64px 20px; }
+      .loans-grid { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .steps::before { display: none; }
+      .pillars { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .stats-bar { flex-wrap: wrap; }
+      .hero { padding-bottom: 200px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span>Shree Nidhi</span>
+    <span>Capitals</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#loans">Loans</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Apply Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-badge">Trusted Since 2009</div>
+    <h1>Your Growth,<br/><em>Our Commitment</em></h1>
+    <p>Shree Nidhi Capitals brings 15+ years of trusted financial expertise to individuals and businesses across India — with transparent terms, competitive rates, and a human-first approach to lending.</p>
+    <div class="hero-buttons">
+      <a href="#loans" class="btn-primary">Explore Loans</a>
+      <a href="#contact" class="btn-outline">Talk to an Advisor</a>
+    </div>
+  </div>
+  <div class="stats-bar">
+    <div class="stat-item"><strong>₹500Cr+</strong><span>Loans Disbursed</span></div>
+    <div class="stat-item"><strong>18,000+</strong><span>Happy Customers</span></div>
+    <div class="stat-item"><strong>15+</strong><span>Years of Trust</span></div>
+    <div class="stat-item"><strong>98.4%</strong><span>Satisfaction Rate</span></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="section-eyebrow">Who We Are</div>
+      <h2 class="section-title">Rooted in Trust,<br/><em>Built for Growth</em></h2>
+      <p>Founded in 2009, Shree Nidhi Capitals was born from a simple belief: every individual and business deserves access to fair, transparent, and timely financial support. Over 15 years, we have grown from a single branch to a trusted name serving thousands of families and entrepreneurs across Gujarat and beyond.</p>
+      <p>We combine the warmth of a community lender with the professionalism of a modern financial institution — offering a full suite of loan products designed around your unique life goals, not just your credit score.</p>
+      <div class="pillars">
+        <div class="pillar">
+          <h4>Transparent Practices</h4>
+          <p>No hidden fees. No surprise charges. Every term is clearly explained before you sign.</p>
+        </div>
+        <div class="pillar">
+          <h4>Fast Disbursal</h4>
+          <p>Most loans approved within 48 hours. Emergency funds available within 24 hours.</p>
+        </div>
+        <div class="pillar">
+          <h4>Growth-Oriented</h4>
+          <p>Our advisors work with you to find the loan structure that supports long-term financial health.</p>
+        </div>
+        <div class="pillar">
+          <h4>Personal Attention</h4>
+          <p>Dedicated relationship managers who know your name and your story.</p>
+        </div>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div class="astat"><strong>₹500Cr+</strong><span>Loans Disbursed</span></div>
+      <div class="astat"><strong>18,000+</strong><span>Happy Customers</span></div>
+      <div class="astat"><strong>15+</strong><span>Years of Trust</span></div>
+      <div class="astat"><strong>98.4%</strong><span>Satisfaction Rate</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOANS -->
+<section id="loans">
+  <div class="loans-header">
+    <div class="section-eyebrow">Our Products</div>
+    <h2 class="section-title">A Loan for <em>Every Need</em></h2>
+  </div>
+  <div class="loans-grid">
+    <div class="loan-card">
+      <div class="loan-tag">Personal</div>
+      <h3>Personal Loans</h3>
+      <div class="loan-rate">From 10.5% p.a. &nbsp;·&nbsp; Up to ₹25 Lakhs</div>
+      <p>Flexible personal loans for medical emergencies, travel, weddings, or any personal need — with minimal documentation and fast disbursal.</p>
+      <ul>
+        <li>No collateral required</li>
+        <li>Tenure: 12–60 months</li>
+        <li>Quick 48-hr approval</li>
+      </ul>
+      <a href="#contact" class="loan-link">Apply for this loan →</a>
+    </div>
+    <div class="loan-card">
+      <div class="loan-tag">Business</div>
+      <h3>Business Loans</h3>
+      <div class="loan-rate">From 12% p.a. &nbsp;·&nbsp; Up to ₹2 Crores</div>
+      <p>Fuel your business ambitions with working capital loans, equipment financing, and expansion funds tailored to your cash flow cycle.</p>
+      <ul>
+        <li>Working capital &amp; term loans</li>
+        <li>Doorstep service available</li>
+        <li>Flexible repayment options</li>
+      </ul>
+      <a href="#contact" class="loan-link">Apply for this loan →</a>
+    </div>
+    <div class="loan-card">
+      <div class="loan-tag">Home</div>
+      <h3>Home Loans</h3>
+      <div class="loan-rate">From 8.75% p.a. &nbsp;·&nbsp; Up to ₹5 Crores</div>
+      <p>Turn your dream home into reality with competitive home loan rates, long tenures, and expert guidance through every step.</p>
+      <ul>
+        <li>Tenure up to 30 years</li>
+        <li>Balance transfer available</li>
+        <li>Tax benefit eligible</li>
+      </ul>
+      <a href="#contact" class="loan-link">Apply for this loan →</a>
+    </div>
+    <div class="loan-card">
+      <div class="loan-tag">Education</div>
+      <h3>Education Loans</h3>
+      <div class="loan-rate">From 9.5% p.a. &nbsp;·&nbsp; Up to ₹40 Lakhs</div>
+      <p>Invest in knowledge with education loans covering tuition, accommodation, and study materials — for India and international universities.</p>
+      <ul>
+        <li>Moratorium period available</li>
+        <li>Covers all study expenses</li>
+        <li>Tax deduction under Sec 80E</li>
+      </ul>
+      <a href="#contact" class="loan-link">Apply for this loan →</a>
+    </div>
+    <div class="loan-card">
+      <div class="loan-tag">Gold</div>
+      <h3>Gold Loans</h3>
+      <div class="loan-rate">From 7.5% p.a. &nbsp;·&nbsp; Up to ₹50 Lakhs</div>
+      <p>Unlock the value of your gold assets instantly. Safe vault storage, transparent valuation, and same-day disbursal.</p>
+      <ul>
+        <li>Same-day disbursal</li>
+        <li>Secure vault storage</li>
+        <li>Transparent gold valuation</li>
+      </ul>
+      <a href="#contact" class="loan-link">Apply for this loan →</a>
+    </div>
+    <div class="loan-card">
+      <div class="loan-tag">Mortgage</div>
+      <h3>Mortgage Loans</h3>
+      <div class="loan-rate">From 9% p.a. &nbsp;·&nbsp; Up to ₹10 Crores</div>
+      <p>Leverage your property as collateral for high-value loans. Suitable for business expansion, investment, or emergency liquidity.</p>
+      <ul>
+        <li>Commercial &amp; residential</li>
+        <li>Long repayment tenure</li>
+        <li>Overdraft facility available</li>
+      </ul>
+      <a href="#contact" class="loan-link">Apply for this loan →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="process-header">
+    <div class="section-eyebrow">How It Works</div>
+    <h2 class="section-title">Loan Approval in <em>4 Simple Steps</em></h2>
+    <p>We have streamlined our process to remove the friction from borrowing. From application to disbursal, expect clarity and speed at every step.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h4>Apply Online or Walk In</h4>
+      <p>Fill our simple form or visit any of our branches. Our advisors are available 6 days a week.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h4>Document Submission</h4>
+      <p>Submit minimal KYC and income documents. We accept digital uploads for your convenience.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h4>Verification &amp; Approval</h4>
+      <p>Our team completes background checks and credit assessment within 24–48 hours.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h4>Disbursal to Your Account</h4>
+      <p>Approved funds are directly transferred to your bank account — same day or next business day.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testimonials-header">
+    <div class="section-eyebrow">Customer Stories</div>
+    <h2 class="section-title">Real People. <em>Real Impact.</em></h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <p>Shree Nidhi Capitals processed my business loan in under 48 hours. Their team understood my seasonal cash flow and structured the repayment accordingly. Truly a partner, not just a lender.</p>
+      <div class="testi-author">
+        <strong>Ramesh Patel</strong>
+        <span>Small Business Owner, Ahmedabad</span>
+      </div>
+    </div>
+    <div class="testi-card">
+      <p>I was nervous about applying for a home loan, but the team held my hand through every document. The rate was competitive and the entire process was transparent with no hidden charges.</p>
+      <div class="testi-author">
+        <strong>Priya Mehta</strong>
+        <span>Homemaker, Surat</span>
+      </div>
+    </div>
+    <div class="testi-card">
+      <p>My education loan was approved for a foreign university within days. The moratorium period made it stress-free while I was still studying. Highly recommend to any student!</p>
+      <div class="testi-author">
+        <strong>Arjun Sharma</strong>
+        <span>MBBS Student, Pune</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-header">
+    <div class="section-eyebrow">Get In Touch</div>
+    <h2 class="section-title">We're Here to <em>Help You Grow</em></h2>
+    <p>Whether you have questions about eligibility, want to compare loan options, or are ready to apply — our advisors are available Monday to Saturday, 9am to 6pm.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="cinfo-item">
+        <div class="cinfo-icon">📞</div>
+        <div>
+          <strong>Call Us</strong>
+          <span>+91 98765 43210<br/>Mon–Sat, 9:00 AM – 6:00 PM</span>
+        </div>
+      </div>
+      <div class="cinfo-item">
+        <div class="cinfo-icon">✉️</div>
+        <div>
+          <strong>Email Us</strong>
+          <span>info@shreenidhi.in<br/>We respond within 4 business hours</span>
+        </div>
+      </div>
+      <div class="cinfo-item">
+        <div class="cinfo-icon">📍</div>
+        <div>
+          <strong>Visit Us</strong>
+          <span>301, Nidhi House, Ring Road<br/>Surat, Gujarat — 395 003</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Quick Loan Enquiry</h3>
+      <p>Fill this form and we'll call you back within 4 hours.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" placeholder="Your full name" />
+        </div>
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="tel" placeholder="+91 XXXXX XXXXX" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Loan Type</label>
+        <select>
+          <option>Select loan type…</option>
+          <option>Personal Loans</option>
+          <option>Business Loans</option>
+          <option>Home Loans</option>
+          <option>Education Loans</option>
+          <option>Gold Loans</option>
+          <option>Mortgage Loans</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message (Optional)</label>
+        <textarea placeholder="Tell us a bit about your requirement…"></textarea>
+      </div>
+      <button class="btn-submit">Send Enquiry</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo">
+        <span>Shree Nidhi</span>
+        <span>Capitals</span>
+      </div>
+      <p>Trusted financial partner for individuals and businesses since 2009. RBI registered NBFC.</p>
+      <div class="footer-badges">
+        <span class="badge">RBI Registered</span>
+        <span class="badge">ISO 9001:2015</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#loans">Our Loans</a></li>
+        <li><a href="#contact">Apply Now</a></li>
+        <li><a href="#loans">Interest Rates</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Loan Products</h4>
+      <ul>
+        <li><a href="#loans">Personal Loan</a></li>
+        <li><a href="#loans">Business Loan</a></li>
+        <li><a href="#loans">Home Loan</a></li>
+        <li><a href="#loans">Education Loan</a></li>
+        <li><a href="#loans">Gold Loan</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Fair Practice Code</a></li>
+        <li><a href="#">Grievance Redressal</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Shree Nidhi Capitals. All rights reserved. | Loan disbursals subject to credit assessment and documentation.</p>
+    <p>CIN: U65923GJ2009PTC056789</p>
+  </div>
+</footer>
+
+</body>
+</html>
